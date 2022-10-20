@@ -45,12 +45,12 @@ const config = {
 
 module.exports = (_, argv) => {
   if (argv.mode === 'development') {
-    config.devtool = 'inline-source-map'
-    config.watch = true
+    config.devtool = 'eval-source-map'
     config.devServer = {
-      contentBase: path.resolve(__dirname, 'dist'),
+      watchFiles: ['/src'],
+      open: true,
       historyApiFallback: true,
-      watchContentBase: true
+      port: 9000
     }
     config.plugins.push(new HtmlWebpackHarddiskPlugin({
       outputPath: path.resolve(__dirname, 'dist')
